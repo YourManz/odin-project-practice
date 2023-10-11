@@ -8,7 +8,6 @@ let toggleTerm = true;
 let tempTerm = '';
 let baseTerm = '';
 let augmentTerm = '';
-const calculateCheck = toggleTerm ? tempTerm = baseTerm : calculateValues(Number(baseTerm), Number(augmentTerm));
 
 divButtonGrid.addEventListener('click', (event) => {
   const clickedButton = event.target;
@@ -34,7 +33,6 @@ divButtonGrid.addEventListener('click', (event) => {
   };
   tempTerm = '';
   outputDisplay.innerHTML = tempTerm;
-  calculateCheck;
   console.log(baseTerm);
   console.log(augmentTerm);
 
@@ -64,7 +62,7 @@ divButtonGrid.addEventListener('click', (event) => {
     return;
   };
   calculateValues(Number(baseTerm), Number(augmentTerm));
-})
+});
 
 clearButton.addEventListener('click', () => {
   clearInput()
@@ -75,31 +73,26 @@ function clearInput() {
   tempTerm = '';
   baseTerm = '';
   augmentTerm = '';
-}
+};
 
 function equal() {
   if (toggleTerm) {
     return;
   }
-  tempTerm = augmentTerm
+  augmentTerm = tempTerm
   calculateValues(Number(baseTerm), Number(augmentTerm))
-}
+};
 
 function calculateValues(base, augment) {
   
   if (operation === 'add') {
     base += augment;
-    console.log('test')
   } else if (operation === 'subtract') {
     base -= augment;
-    console.log('test')
   } else if (operation === 'multiply') {
     base = base * augment;
-    console.log('test')
   } else if (operation === 'devide') {
     base = base / augment;
-    console.log('test')
   };
-    clearInput()
     outputDisplay.innerHTML = base;
-}
+};
