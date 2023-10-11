@@ -2,12 +2,14 @@ const outputDisplay = document.querySelector('.js-output');
 const numberButton = document.querySelector('.js-button-number');
 const divButtonGrid = document.querySelector('.js-button-grid');
 const clearButton = document.querySelector('.js-clear-button');
+const decimalButton = document.querySelector('.js-button-decimal');
 
 let operation = '';
 let toggleTerm = true;
 let tempTerm = '';
 let baseTerm = '';
 let augmentTerm = '';
+let hasDecimal = false;
 
 divButtonGrid.addEventListener('click', (event) => {
   const clickedButton = event.target;
@@ -33,11 +35,12 @@ divButtonGrid.addEventListener('click', (event) => {
   };
   tempTerm = '';
   outputDisplay.innerHTML = tempTerm;
+  hasDecimal = false;
+  
   console.log(baseTerm);
   console.log(augmentTerm);
 
   if (button.innerHTML === '+') {
-
     operation = 'add';
   }  else if (button.innerHTML === '-') {
     operation = 'subtract';
@@ -46,7 +49,6 @@ divButtonGrid.addEventListener('click', (event) => {
   } else if (button.innerHTML === '/') {
     operation = 'devide';
   }
-  calculateValues(Number(baseTerm), Number(augmentTerm));
 });
 
 divButtonGrid.addEventListener('click', (event) => {
@@ -68,11 +70,22 @@ clearButton.addEventListener('click', () => {
   clearInput()
 });
 
+decimalButton.addEventListener('click', (event) => {
+  const button = event.target
+  if (hasDecimal) {
+    return;
+  };
+  hasDecimal = (!hasDecimal);
+  tempTerm += '.';
+  outputDisplay.innerHTML = tempTerm;
+});
+
 function clearInput() {
   outputDisplay.innerHTML = '';
   tempTerm = '';
   baseTerm = '';
   augmentTerm = '';
+  hasDecimal = false;
 };
 
 function equal() {
@@ -94,5 +107,6 @@ function calculateValues(base, augment) {
   } else if (operation === 'devide') {
     base = base / augment;
   };
+    clearInput();
     outputDisplay.innerHTML = base;
 };
