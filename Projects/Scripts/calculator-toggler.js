@@ -6,35 +6,38 @@ let toggled = {
 };
 const categories = ['addition', 'subtraction', 'multiplication', 'devision'];
 
+console.log(categories.length)
+
 divButtonGrid.addEventListener('click', (event) => {
   const button = event.target
   if (!button.classList.contains('js-button-operation')) {
     return;
   };  //these lines are just to issolate the right button class clicks
   
-  if (button.innerHTML === '+') {
+
+  if (button.innerHTML === '+') {    
     toggled = {addition:false, subtraction:false, multiplication:false, devision:false};
     toggled.addition = true;
-    button.classList.add('toggled-button');
-  }  else if (button.innerHTML === '-') {
+  }  else if (button.innerHTML === '-') {    
     toggled = {addition:false, subtraction:false, multiplication:false, devision:false};
     toggled.subtraction = true;
-    button.classList.add('toggled-button');
-  } else if (button.innerHTML === '*') {
+  } else if (button.innerHTML === '*') {    
     toggled = {addition:false, subtraction:false, multiplication:false, devision:false};
     toggled.multiplication = true;
-    button.classList.add('toggled-button');
-  } else if (button.innerHTML === '/') {
+  } else if (button.innerHTML === '/') {    
     toggled = {addition:false, subtraction:false, multiplication:false, devision:false};
     toggled.devision = true;
-    button.classList.add('toggled-button');
   };
 
-  for (i = 0; i<categories.length; i++) {
-    if (toggled[categories[i]] === false) {
+  categories.forEach((value, index) => {
+    if (toggled[categories[index]] === false) {
+      console.log(`is false ${index}`);
+      console.log(value);
       button.classList.remove('toggled-button');
-    } else if (toggled[categories[i]] === true) {
+    } else if (toggled[categories[index]] === true) {
+      console.log(`is true${index}`);
+      console.log(value);
       button.classList.add('toggled-button');
     };
-  };
+  });
 });

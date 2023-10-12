@@ -25,6 +25,11 @@ body {
   cursor:pointer;
 }
 
+.toggled-button {
+  background-color: black;
+  color:white;
+}
+
 .operation-button {
   border:none;
   margin:8px;
@@ -34,7 +39,4 @@ body {
   background-color:beige;
   font-weight:bold;
 }
-.toggled-button {
-  background-color: black;
-  color:white;
-}
+
