@@ -29,15 +29,15 @@ divButtonGrid.addEventListener('click', (event) => {
     toggled.devision = true;
   };
 
+  console.log(button.classList);
+
   categories.forEach((value, index) => {
     if (toggled[categories[index]] === false) {
-      console.log(`is false ${index}`);
-      console.log(value);
-      button.classList.remove('toggled-button');
+      event.target.classList.remove('toggled-button');
     } else if (toggled[categories[index]] === true) {
-      console.log(`is true${index}`);
-      console.log(value);
-      button.classList.add('toggled-button');
+      event.target.classList.add('toggled-button');
     };
   });
+  console.log(button.classList);
+  event.target.classList.add('toggled-button')
 });
